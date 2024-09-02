@@ -1,29 +1,36 @@
-from flask import Flask, render_template, request, jsonify
+from fastapi import FastAPI, Request
+from pydantic import BaseModel
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
-# model = torch.load('path_to_model.pth') или использовать модель из Hugging Face.
+# Загружаем модель
+#model = torch.load('model/model.pth')
+#model.eval()
 
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+class TextInput(BaseModel):
+    text: str
 
-# Заглушка вместо настоящей модели
-def dummy_neural_network(input_text):
-    # Пример работы нейронки: переводит текст в верхний регистр
-    return input_text.upper()
+@app.post("/process")
+async def process_text(input_data: TextInput):
+    input_text = input_data.text
 
+    # Пример обработки текста с моделью
+    output_text = model_process(input_text)
 
-@app.route('/process', methods=['POST'])
-def process_text():
-    data = request.get_json()
-    input_text = data.get('text')
+    return {"output": output_text}
 
-    # Обработка текста с помощью нейронной сети
-    result = dummy_neural_network(input_text)
+def model_process(text):
+    # Пример работы модели (замени на реальную обработку)
+    return text.upper()
 
-    return jsonify({'output': result})
+templates = Jinja2Templates(directory="templates")
 
+@app.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    import uvicorn
+    uvicorn.run(app, host='127.0.0.1', port=8000)

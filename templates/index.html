@@ -135,8 +135,8 @@
         async function processText() {
             const inputText = document.getElementById('input-text').value;
 
-            // Здесь должен быть реальный запрос к серверу
-            const response = await fetch('/process', {
+            // Отправка POST-запроса на сервер FastAPI
+            const response = await fetch('http://127.0.0.1:8000/process', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
