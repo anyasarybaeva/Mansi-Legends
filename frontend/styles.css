@@ -1,0 +1,236 @@
+body {
+    margin: 0;
+    font-family: 'Tilda Sans VF', sans-serif;
+}
+
+nav {
+    background-color: #000000;
+    color: #FFFFFF;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-size: 28px;
+    color: #FFFFFF;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+header {
+    background: url('main.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header .hero {
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 24px;
+}
+
+header .translate-button {
+    background-color: #178433;
+    color: #FFFFFF;
+    padding: 18px 60px;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+body {
+    font-family: 'Tilda Sans VF', sans-serif;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.input-section {
+    position: relative;
+    width: 500px;
+}
+
+.translator-text {
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.translator-text2 {
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.lang-options {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-right: 50px;
+    font-weight: lighter;
+    font-size: 22px;
+    font-family: 'Tilda Sans VF', sans-serif;
+    text-align: center;
+}
+
+.lang-options span {
+    cursor: pointer;
+}
+
+.lang-options .active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.input-section textarea {
+    width: 100%;
+    height: 150px;
+    font-family: 'Segoe UI Emoji', sans-serif;
+    padding: 50px 10px 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    resize: none;
+}
+
+.input-section .symbols {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI Emoji', sans-serif;
+}
+
+.input-section .symbols span {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.input-section .placeholder {
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    color: #999;
+    pointer-events: none;
+}
+
+.input-section .char-counter {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #999;
+}
+
+.hidden {
+    display: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.input-section .symbols,
+.placeholder {
+    font-family: 'Segoe UI Emoji', sans-serif;
+}
+
+.translate-button {
+    background-color: #178433;
+    color: #FFFFFF;
+    padding: 18px 60px;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Tilda Sans VF', sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.about-block {
+    padding: 50px 20px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+}
+
+.about-text-header {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 23px;
+}
+
+.about-text-postheader {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 23px;
+}
+
+.contacts-block {
+    padding: 100px 20px;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    font-size: 22px;
+}
+
+.contacts-text {
+    color: #000000;
+    text-decoration: none;
+    font-size: 23px;
+    1
+}
+
+.social-icons {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px 20px;
+}
+
+.last-block {
+    padding: 100px 20px;
+    background-color: #000000;
+    color: #000000;
+}
