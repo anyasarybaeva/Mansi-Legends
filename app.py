@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 # Если у вас есть модель, раскомментируйте эти строки
 # model = torch.load('model/model.pth')
@@ -37,10 +38,11 @@ def model_process(text):
     return text.upper()
 
 templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse("htmlMain.html", {"request": request})
 
 if __name__ == '__main__':
     import uvicorn
