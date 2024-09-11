@@ -6,15 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4039be56-5b75-48c4-9cf3-c81bf41158b5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/ChangeTranslator.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/ChangeTranslator.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/LinkedinIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/LinkedinIcon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/TelegramIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/TelegramIcon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/WhatsappIcon.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/WhatsappIcon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/htmlMain.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/htmlMain.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/main.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/main.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,22 +15,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2lnxpA3ol5xnjeMtfU6GHg7kDbs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.app.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/24",
-    "last_opened_file_path": "/Users/hnba103042/Desktop/hack_m"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/24&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hnba103042/Desktop/hack_m&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/static/images" />
