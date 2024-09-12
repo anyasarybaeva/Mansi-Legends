@@ -44,6 +44,10 @@ def translate(text, model, tokenizer, to_ru=False, src_lang=None, tgt_lang=None,
     )
     return tokenizer.batch_decode(result, skip_special_tokens=True)
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to my FastAPI application!"}
+
 @app.on_event("startup")
 async def startup_event():
     global model, tokenizer
