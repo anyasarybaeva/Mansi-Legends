@@ -1,3 +1,10 @@
+# luima_seripos.csv -- заголовки и тексты газет с приведенными к стандартному виду особыми буквами
+# luima_seripos_no_monospace_mansi_only.csv -- заголовки и тексты газет только на мансийском сo слепленными моноспейсами
+# luima_seripos_no_monospace_all.csv -- заголовки и тексты газет oс слепленными моноспейсами
+# luima_seripos_txt_rus -- русские заголовки и тексты газет в формате txt отдельными файлами
+# luima_seripos_txt_mansi -- мансийские заголовки и тексты газет в формате txt отдельными файлами
+# luima_seripos_txt_both -- пары мансийско-русских заголовков и текстов газет в формате txt отдельными файлами
+
 from bs4 import BeautifulSoup
 import requests
 import os
