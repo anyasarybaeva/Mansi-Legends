@@ -7,7 +7,7 @@ import torch
 app = FastAPI()
 
 # Загрузка модели и токенизатора
-model_path = "path_to_your_model"  # Укажите путь к вашей модели
+model_path = "home/asarybaeva/ds/600m_added_vocab"  # Укажите путь к вашей модели
 model, tokenizer = None, None
 
 def fix_tokenizer(tokenizer, new_lang='mns_Cyrl'):
