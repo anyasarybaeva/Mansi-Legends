@@ -24,6 +24,10 @@ def replaceUTF16(input_string):
     result_string = re.sub('', 'Э̄', result_string)
     result_string = re.sub('', 'Я̄', result_string)
 
+    # чистим переносы строк
+    result_string = re.sub('(?<=[а̄ēё̄оы̄ю̄э̄я̄А̄ĒЁ̄О̄Ы̄Ю̄Э̄Я̄̄ӮӯӇӈ\w])[-–]\s(?![А-ЯА̄ĒЁ̄О̄Ы̄Ю̄Э̄Я̄̄ӮӇ])', '', result_string)
+    result_string = re.sub('(?<=[а̄ēё̄оы̄ю̄э̄я̄А̄ĒЁ̄О̄Ы̄Ю̄Э̄Я̄̄ӮӯӇӈ\w])[-–]\s', '-', result_string)
+
     return result_string
 
 
