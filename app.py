@@ -1,8 +1,7 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import NllbTokenizer, AutoModelForSeq2SeqLM
 import torch
-from tqdm import trange
 
 # Инициализация FastAPI
 app = FastAPI()
