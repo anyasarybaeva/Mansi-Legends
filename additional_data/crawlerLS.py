@@ -4,6 +4,7 @@ import os
 import re
 import pandas as pd
 
+# функция для приведения особых букв к привычному формату + чистки переноса слов на новую строку
 def replaceUTF16(input_string):
     result_string = re.sub('', 'а̄', input_string)
     result_string = re.sub('', 'ē', result_string)
@@ -15,12 +16,10 @@ def replaceUTF16(input_string):
     result_string = re.sub('', 'я̄', result_string)
     
     result_string = re.sub('', 'А̄', result_string)
-    # smallcase only
-    # result_string = re.sub('\uf510', 'Ē', result_string)
+    result_string = re.sub('', 'Ē', result_string)
     result_string = re.sub('', 'Ё̄', result_string)
     result_string = re.sub('', 'О̄', result_string)
-    # smallcase only
-    # result_string = re.sub('\uf520', 'Ы̄', result_string)
+    result_string = re.sub('', 'Ы̄', result_string)
     result_string = re.sub('', 'Ю̄', result_string)
     result_string = re.sub('', 'Э̄', result_string)
     result_string = re.sub('', 'Я̄', result_string)
@@ -30,6 +29,13 @@ def replaceUTF16(input_string):
     result_string = re.sub('(?<=[а̄ēё̄оы̄ю̄э̄я̄А̄ĒЁ̄О̄Ы̄Ю̄Э̄Я̄̄ӮӯӇӈ\w])[-–]\s', '-', result_string)
 
     return result_string
+
+# функция ищет слова, записанные побуквенно через пробел
+def cutMonospace(input_string):
+   if re.search('(?<=\s)(([А-Я]|А̄|Ē|Ё̄|О̄|Ы̄|Ю̄|Э̄|Я̄|Ӯ|Ӈ|[а-я]|а̄|ē|ё̄|о̄|ы̄|ю̄|э̄|я̄|ӯ|ӈ)\s){4,}(?=([А-Я]|А̄|Ē|Ё̄|О̄|Ы̄|Ю̄|Э̄|Я̄|Ӯ|Ӈ|[а-я]|а̄|ē|ё̄|о̄|ы̄|ю̄|э̄|я̄|ӯ|ӈ)\s)', input_string):
+    return re.sub('(?<=\s)(([А-Я]|А̄|Ē|Ё̄|О̄|Ы̄|Ю̄|Э̄|Я̄|Ӯ|Ӈ|[а-я]|а̄|ē|ё̄|о̄|ы̄|ю̄|э̄|я̄|ӯ|ӈ)\s){4,}(?=([А-Я]|А̄|Ē|Ё̄|О̄|Ы̄|Ю̄|Э̄|Я̄|Ӯ|Ӈ|[а-я]|а̄|ē|ё̄|о̄|ы̄|ю̄|э̄|я̄|ӯ|ӈ)\s)', lambda m: ''.join(m.group(0).split()), input_string)
+   else:
+     return input_string
 
 
 
@@ -41,7 +47,7 @@ root = "https://www.khanty-yasang.ru"
 response = requests.get(url).text
 
 path = os.getcwd() + '/additional_data/'
-
+# fix_count = 0
 # Проверяем, успешно ли был выполнен запрос
 if response:
   # Создаем объект BeautifulSoup для парсинга HTML
@@ -84,29 +90,41 @@ if response:
           article_text = article_soup.find_all("div", class_=["field-body", "field-item even"])
 
           # записываем заголовки и статьи
-          if article_title: mansi_title = replaceUTF16(article_title[0].get_text())
-          if article_text: mansi_text = replaceUTF16(article_text[0].get_text())
-          if len(article_title) > 1: rus_title = article_title[1].get_text()
-          if len(article_text) > 1: rus_text = article_text[1].get_text()
+          if article_title: mansi_title = cutMonospace(replaceUTF16(article_title[0].get_text()))
+          if article_text: mansi_text = cutMonospace(replaceUTF16(article_text[0].get_text()))
+          if len(article_title) > 1: rus_title = cutMonospace(replaceUTF16(article_title[1].get_text()))
+          if len(article_text) > 1: rus_text = cutMonospace(replaceUTF16(article_text[1].get_text()))
 
-          with open(path + "luima_seripos_txt_mansi/mansi_title" + str(count) + ".txt", "w") as file:
-            file.write(mansi_title)
-          with open(path + "luima_seripos_txt_mansi/mansi_text" + str(count) + ".txt", "w") as file:
-            file.write(mansi_text)
+          # для ручного исправления текстов с подсчетом исправленных текстов; не используется
+          # list_to_correct = [mansi_title, mansi_text]
+          # if len(article_title) > 1: list_to_correct.extend(rus_title)
+          # if len(article_text) > 1: list_to_correct.extend(rus_text)
+          # for example in list_to_correct:
+          #   if (re.findall('(?<=\s)(([А-Я]|А̄|Ē|Ё̄|О̄|Ы̄|Ю̄|Э̄|Я̄|Ӯ|Ӈ|[а-я]|а̄|ē|ё̄|о̄|ы̄|ю̄|э̄|я̄|ӯ|ӈ)\s){4,}(?=([А-Я]|А̄|Ē|Ё̄|О̄|Ы̄|Ю̄|Э̄|Я̄|Ӯ|Ӈ|[а-я]|а̄|ē|ё̄|о̄|ы̄|ю̄|э̄|я̄|ӯ|ӈ)\s)', example)):
+          #     fixed_version = re.sub('(?<=\s)(([А-Я]|А̄|Ē|Ё̄|О̄|Ы̄|Ю̄|Э̄|Я̄|Ӯ|Ӈ|[а-я]|а̄|ē|ё̄|о̄|ы̄|ю̄|э̄|я̄|ӯ|ӈ)\s){4,}(?=([А-Я]|А̄|Ē|Ё̄|О̄|Ы̄|Ю̄|Э̄|Я̄|Ӯ|Ӈ|[а-я]|а̄|ē|ё̄|о̄|ы̄|ю̄|э̄|я̄|ӯ|ӈ)\s)', lambda m: ''.join(m.group(0).split()), example)
+          #     fixed_example = input("Введи исправленную версию: ")
+          #     fix_count += 1
+          #     print('--------------------------------')
 
-          if rus_title:
-            with open(path + "luima_seripos_txt_rus/rus_title" + str(count) + ".txt", "w") as file:
-              file.write(rus_title)
-          if rus_text:
-            with open(path + "luima_seripos_txt_rus/rus_text" + str(count) + ".txt", "w") as file:
-              file.write(rus_text)
+          # раскомментировать для сохранения в отдельных папках в txt
+          # with open(path + "luima_seripos_txt_mansi/mansi_title" + str(count) + ".txt", "w") as file:
+          #   file.write(mansi_title)
+          # with open(path + "luima_seripos_txt_mansi/mansi_text" + str(count) + ".txt", "w") as file:
+          #   file.write(mansi_text)
+
+          # if rus_title:
+          #   with open(path + "luima_seripos_txt_rus/rus_title" + str(count) + ".txt", "w") as file:
+          #     file.write(rus_title)
+          # if rus_text:
+          #   with open(path + "luima_seripos_txt_rus/rus_text" + str(count) + ".txt", "w") as file:
+          #     file.write(rus_text)
           
-          if mansi_title and rus_title:
-            with open(path + "luima_seripos_txt_both/both_title" + str(count) + ".txt", "w") as file:
-              file.write(mansi_title + '\n\n\n' + rus_title)
-          if mansi_text and rus_text:
-            with open(path + "luima_seripos_txt_both/both_text" + str(count) + ".txt", "w") as file:
-              file.write(mansi_text + '\n\n\n' + rus_text)
+          # if mansi_title and rus_title:
+          #   with open(path + "luima_seripos_txt_both/both_title" + str(count) + ".txt", "w") as file:
+          #     file.write(mansi_title + '\n\n\n' + rus_title)
+          # if mansi_text and rus_text:
+          #   with open(path + "luima_seripos_txt_both/both_text" + str(count) + ".txt", "w") as file:
+          #     file.write(mansi_text + '\n\n\n' + rus_text)
           
 
           # записываем заголовки и статьи
@@ -132,10 +150,11 @@ else: print("bs4 could't get start url")
 if parallel_corpora_dict:
   df = pd.DataFrame.from_dict(parallel_corpora_dict, orient='index')
   df = df[['mansi', 'rus']]
-  df.to_csv(path + 'luima_seripos.csv', sep='|', encoding='utf-8')
+  # ввести желаемое название файла
+  df.to_csv(path + 'luima_seripos_no_monospace_all.csv', sep='|', encoding='utf-8')
 
 
-
+    # список кодов особых букв
     # result_string = re.sub('\uf50f', 'а̄', input_string)
     # result_string = re.sub('\uf511', 'ē', input_string)
     # result_string = re.sub('\uf513', 'ё̄', input_string)
@@ -153,3 +172,5 @@ if parallel_corpora_dict:
     # result_string = re.sub('\uf52c', 'Ю̄', input_string)
     # result_string = re.sub('\uf522', 'Э̄', input_string)
     # result_string = re.sub('\uf528', 'Я̄', input_string)
+
+# print(fix_count)
