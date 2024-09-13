@@ -42,7 +42,7 @@ nav ul li a {
 }
 
 header {
-    background: url('/static/images/main.png') no-repeat center center/cover;
+    background: url('main.png') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -96,10 +96,25 @@ body {
     font-size: 20px;
 }
 
+.changelangimg {
+    position: absolute;
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.lang-options-lng {
+    margin-left: 40px;
+}
+
+.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .lang-options {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 90px;
     margin-right: 50px;
     font-weight: lighter;
     font-size: 22px;
@@ -112,8 +127,7 @@ body {
 }
 
 .lang-options .active {
-    font-weight: bold;
-    text-decoration: underline;
+    cursor: default;
 }
 
 .input-section textarea {
@@ -146,6 +160,14 @@ body {
 .input-section .placeholder {
     position: absolute;
     top: 35px;
+    left: 10px;
+    color: #999;
+    pointer-events: none;
+}
+
+.input-section .placeholder2 {
+    position: absolute;
+    top: 0px;
     left: 10px;
     color: #999;
     pointer-events: none;
@@ -233,3 +255,4 @@ body {
     padding: 100px 20px;
     background-color: #000000;
     color: #000000;
+}
