@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pydantic
+jinja2
+transformers==4.33
+torch
+tqdm
