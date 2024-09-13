@@ -1,0 +1,8 @@
+.venv
+.idea
+.*
+600m_added_vocab
+Miniconda3-latest-Linux-x86_64.sh
+__pycache__/
+venv/
+
