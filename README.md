@@ -11,9 +11,6 @@
 ### Структура проекта
 Проект разделен на смысловые ветки.
 
-[Инференс модели](https://github.com/anyasarybaeva/Mansi-Legends/tree/12)
-- **inference.py**: код инференса модели
-
 [Полусинтетический датасет](https://github.com/anyasarybaeva/Mansi-Legends/tree/36)
 - **backtranslated.csv**: полусинтетический датасет
 
@@ -23,9 +20,9 @@
 - **grammar/**:  директория для скрейпинга и хранения дидактических материалов
   - **grammar.py**: скрейпер
 - **preprocess/**: директория для предобработки и хранения результатов предобработки датасета
-  - **preprocess.py**: преобработчик датасета
+  - **preprocess.py**: преодбработчик датасета
 
-[Приложение](https://github.com/anyasarybaeva/Mansi-Legends/tree/feature/app)
+[Приложение](https://github.com/anyasarybaeva/Mansi-Legends))
 - **app.py**: Главный файл приложения FastAPI, откуда запускается сервер.
 - **static/**: Директория для статических файлов, включая CSS и JavaScript.
   - **css/style.css**: Стили для веб-страницы.
