@@ -9,24 +9,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const translateButton = document.getElementById('.translate-button');
     const charCount = document.getElementById('charCount');
 
-    // Обработчик для смены языка
-    document.getElementById('changeLang').addEventListener('click', function () {
-        // Получаем текущие тексты
-        const mansitxt = document.getElementById('mansitxt');
-        const rustxt = document.getElementById('rustxt');
+    // Функция для обновления состояния языков и символов
+    function updateLanguageState() {
 
-        // Меняем текст местами
-        const tempText = mansitxt.textContent;
-        mansitxt.textContent = rustxt.textContent;
-        rustxt.textContent = tempText;
+        if (rustxt.classList.contains('active')) {
+            // Если активен русский язык
+            rustxt.classList.remove('active');
+            mansitxt.classList.add('active');
 
-        // Убираем активный класс у обоих элементов
-        mansitxt.classList.remove('active');
-        rustxt.classList.remove('active');
+            // Включаем мансийские символы
+            symbols.forEach(symbol => {
+                symbol.classList.remove('disabled');
+            });
+        } else {
+            // Если активен мансийский язык
+            mansitxt.classList.remove('active');
+            rustxt.classList.add('active');
 
-        // Добавляем активный класс только к элементу на месте "Русский"
-        rustxt.classList.add('active');
-    });
+            // Отключаем мансийские символы
+            symbols.forEach(symbol => {
+                symbol.classList.add('disabled');
+            });
+        }
+    }
 
     // Ввод мансийских символов
     symbols.forEach(symbol => {
