@@ -122,11 +122,29 @@
         </ul>
     </section>
 
-
     <!-- Блок "last" -->
     <section id="last" class="last-block">
     </section>
     
+    <script>
+    document.getElementById('translate-button').addEventListener('click', async () => {
+        const textInputValue = document.getElementById('textInput').value;
+        
+        console.log("Translate button pressed");
+
+        // Отправка POST-запроса на сервер с текстом для перевода
+        const response = await fetch('/process', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ text: textInputValue, to_ru: mansitxt.classList.contains('active')})  // Отправляем полный текст
+        });
+
+        const result = await response.json();
+        document.getElementById('translated-text').value = result.output;  // Выводим результат в текстовое поле
+    });
+    </script>
     <script src="static/js/app.js"></script>
 </body>
 
