@@ -85,21 +85,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Инициализируем счетчик при загрузке страницы
     updateCharCount();
-
-    // Функция перевода backend
-    document.getElementById('translate-button').addEventListener('click', async () => {
-        const textInputValue = document.getElementById('textInput').value;
-
-        // Отправка POST-запроса на сервер с текстом для перевода
-        const response = await fetch('/process', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ text: textInputValue })  // Отправляем полный текст
-        });
-
-        const result = await response.json();
-        document.getElementById('translated-text').value = result.output;  // Выводим результат в текстовое поле
-    });
 });
