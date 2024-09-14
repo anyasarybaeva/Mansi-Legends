@@ -34,7 +34,7 @@
 Для остановки сервера используйте сочетание клавиш `Ctrl + C` в терминале.
 
 ### Наша команда
-[![Mansi-Legends.png](https://i.postimg.cc/wTc9PvMY/Mansi-Legends.png)](https://postimg.cc/1fXxVyDv)
+[![Mansi-Legends2.png](https://i.postimg.cc/Njgx3vxd/Mansi-Legends2.png)](https://postimg.cc/GH5YDNVD)
 <br>— <b>Максим Свистунов</b>, ML Engineer. Обучение модели и оптимизация алгоритмов.
 <br>— <b>Анна Сарыбаева</b>, Project Manager. Организационные и технические процессы, backend-разработка.
 <br>— <b>Владимир Михайлов</b>, Аналитик. Письменное написание алгоритмов.
