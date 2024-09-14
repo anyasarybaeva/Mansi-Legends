@@ -33,6 +33,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Обработчик для смены языка
+    document.getElementById('changeLang').addEventListener('click', function () {
+        // Меняем текст местами
+        const mansitxt = document.getElementById('mansitxt');
+        const rustxt = document.getElementById('rustxt');
+        const tempText = mansitxt.textContent;
+        mansitxt.textContent = rustxt.textContent;
+        rustxt.textContent = tempText;
+
+        // Обновляем состояние языков и символов
+        updateLanguageState();
+    });
+
+    // Изначально устанавливаем состояние языков и символов
+    rustxt.classList.add('active');
+
+    symbols.forEach(symbol => {
+        symbol.classList.add('disabled'); // Отключаем мансийские символы при загрузке
+    });
+
     // Ввод мансийских символов
     symbols.forEach(symbol => {
         symbol.addEventListener('click', function () {
