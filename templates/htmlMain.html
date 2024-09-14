@@ -126,47 +126,7 @@
     <!-- Блок "last" -->
     <section id="last" class="last-block">
     </section>
-
-    <script>
-        const textInput = document.getElementById('textInput');
-        const symbols = document.querySelectorAll('.symbols span');
-
-        symbols.forEach(symbol => {
-            symbol.addEventListener('click', function () {
-                // Вставляем символ в текущее положение курсора
-                const start = textInput.selectionStart;
-                const end = textInput.selectionEnd;
-                const value = textInput.value;
-
-                // Обновляем значение текстового поля
-                textInput.value = value.substring(0, start) + this.textContent + value.substring(end);
-
-                // Перемещаем курсор после вставленного символа
-                textInput.selectionStart = textInput.selectionEnd = start + this.textContent.length;
-
-                // Фокусируемся на текстовом поле
-                textInput.focus();
-            });
-        });
-            
-    document.getElementById('translate-button').addEventListener('click', async () => {
-        const textInputValue = document.getElementById('textInput').value;
-
-        // Отправка POST-запроса на сервер с текстом для перевода
-        const response = await fetch('/process', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ text: textInputValue })  // Отправляем полный текст
-        });
-
-        const result = await response.json();
-        document.getElementById('translated-text').value = result.output;  // Выводим результат в текстовое поле
-    });
-
-    </script>
-
+    
     <script src="static/js/app.js"></script>
 </body>
 
