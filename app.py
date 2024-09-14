@@ -23,13 +23,14 @@ app.add_middleware(
 
 class TextInput(BaseModel):
     text: str
+    to_ru: bool
 
 @app.post("/process")
 async def process_text(input_data: TextInput):
     input_text = input_data.text
-    print("Received call", input_text)
+    print( input_data, "Received call", input_text, "to Russian?:", input_data.to_ru)
     # Пример обработки текста моделью
-    output_text = translate(input_text, model, tokenizer)
+    output_text = translate(input_text, model, tokenizer, to_ru = input_data.to_ru)
 
     return {"output": output_text}
 
