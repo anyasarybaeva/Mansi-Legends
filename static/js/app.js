@@ -88,31 +88,19 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCharCount();
 
     // Функция перевода backend
-    document.getElementById('translate-button').addEventListener('click', function () {
-        const textToTranslate = textInput.value;
-        const selectedLanguage = document.querySelector('.lang-options span.active').textContent;
+    document.getElementById('translate-button').addEventListener('click', async () => {
+        const textInputValue = document.getElementById('textInput').value;
 
-        fetch('https://your-backend-service-url.com/translate', {
+        // Отправка POST-запроса на сервер с текстом для перевода
+        const response = await fetch('/process', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                text: textToTranslate,
-                targetLanguage: selectedLanguage === 'Русский' ? 'ru' : 'mansi'
-            })
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('HTTP error! Status: ');
-                }
-                return response.json();
-            })
-            .then(data => {
-                outputTextarea.value = data.translatedText;
-            })
-            .catch(error => {
-                outputTextarea.value = 'error';
-            });
+            body: JSON.stringify({ text: textInputValue })  // Отправляем полный текст
+        });
+
+        const result = await response.json();
+        document.getElementById('translated-text').value = result.output;  // Выводим результат в текстовое поле
     });
 });
