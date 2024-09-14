@@ -42,7 +42,7 @@ nav ul li a {
 }
 
 header {
-    background: url('static/css/main.png') no-repeat center center/cover;
+    background: url('main.png') no-repeat center center/cover;
     height: 100vh;
     display: flex;
     justify-content: center;
