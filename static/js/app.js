@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const textInput = document.getElementById('textInput');
     const inputTextarea = document.getElementById('.input-block textarea');
     const outputTextarea = document.getElementById('translated-text');
-    const translateButton = document.getElementById('.translate-button');
     const charCount = document.getElementById('charCount');
 
     // Функция для обновления состояния языков и символов
