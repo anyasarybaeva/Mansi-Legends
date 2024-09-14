@@ -107,8 +107,26 @@ body {
 }
 
 .active {
-    font-weight: bold;
-    text-decoration: underline;
+    pointer-events: none;
+}
+
+.disabled {
+    color: gray;
+    pointer-events: none;
+    border: 1px solid gray;
+}
+
+.symbols span.disabled {
+    color: gray;
+    border-color: gray;
+    pointer-events: none;
+}
+
+.input-section .symbols span .disabled {
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    pointer-events: none;
 }
 
 .lang-options {
